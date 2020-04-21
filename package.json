@@ -1,7 +1,7 @@
 {
-  "name": "turtlecoin-utils",
+  "name": "cash2-utils",
   "version": "2.0.0",
-  "description": "A Node.js collection of utilities useful for TurtleCoin developers",
+  "description": "A Node.js collection of utilities useful for CASH2 developers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -24,18 +24,17 @@
     "test-js": "env FORCE_JS=1 npm run mocha"
   },
   "keywords": [
-    "TurtleCoin",
     "Utilities"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turtlecoin/turtlecoin-utils.git"
+    "url": "git+https://github.com/CASH2-js/cash2-utils.git"
   },
-  "homepage": "https://utils.turtlecoin.dev",
+  "homepage": "https://github.com/CASH2-js/cash2-utils",
   "bugs": {
-    "url": "https://github.com/turtlecoin/turtlecoin-utils/issues"
+    "url": "https://github.com/CASH2-js/cash2-utils/issues"
   },
-  "author": "Brandon Lehmann <brandonlehmann@gmail.com>",
+  "author": "Brandon Lehmann <brandonlehmann@gmail.com> / wkibbler",
   "contributors": [
     "zpalmtree <22151537+zpalmtree@users.noreply.github.com>"
   ],
@@ -44,12 +43,12 @@
     "aes-js": "^3.1.2",
     "big-integer": "^1.6.48",
     "bytestream-helper": "^0.0.7",
+    "cash2-base58": "git+https://github.com/cash2-js/cash2-base58.git",
+    "cash2-crypto": "git+https://github.com/cash2-js/cash2-crypto.git",
+    "cash2-mnemonics": "git+https://github.com/cash2-js/cash2-mnemonics.git",
     "get-random-values": "^1.2.0",
     "numeral": "^2.0.6",
-    "secure-random-string": "^1.1.0",
-    "turtlecoin-base58": "^0.0.5",
-    "turtlecoin-crypto": "^4.0.6",
-    "turtlecoin-mnemonics": "^0.0.5"
+    "secure-random-string": "^1.1.0"
   },
   "devDependencies": {
     "@types/aes-js": "^3.1.0",
