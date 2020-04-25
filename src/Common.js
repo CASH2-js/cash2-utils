@@ -1,105 +1,88 @@
+"use strict";
 // Copyright (c) 2018-2020, The TurtleCoin Developers
 //
 // Please see the included LICENSE file for more information.
-
-import {Writer} from 'bytestream-helper';
-import {BigInteger} from './Types';
-
+Object.defineProperty(exports, "__esModule", { value: true });
+const bytestream_helper_1 = require("bytestream-helper");
+const Types_1 = require("./Types");
 /** @ignore */
-export class Common {
-    public static absoluteToRelativeOffsets(
-        offsets: BigInteger.BigInteger[] | number[] | string []): BigInteger.BigInteger[] {
-        const offsetsCopy: BigInteger.BigInteger[] = [];
-
+class Common {
+    static absoluteToRelativeOffsets(offsets) {
+        const offsetsCopy = [];
         for (const offset of offsets) {
             if (typeof offset === 'string') {
-                offsetsCopy.push(BigInteger(offset));
-            } else if (typeof offset === 'number') {
-                offsetsCopy.push(BigInteger(offset));
-            } else {
+                offsetsCopy.push(Types_1.BigInteger(offset));
+            }
+            else if (typeof offset === 'number') {
+                offsetsCopy.push(Types_1.BigInteger(offset));
+            }
+            else {
                 offsetsCopy.push(offset);
             }
         }
-
         if (offsetsCopy.length === 1) {
             return offsetsCopy;
         }
-
         for (let i = offsetsCopy.length - 1; i >= 1; --i) {
             offsetsCopy[i] = offsetsCopy[i].subtract(offsetsCopy[i - 1]);
         }
-
         return offsetsCopy;
     }
-
-    public static relativeToAbsoluteOffsets(
-        offsets: BigInteger.BigInteger[] | number[] | string[]): BigInteger.BigInteger[] {
-        const offsetsCopy: BigInteger.BigInteger[] = [];
-
+    static relativeToAbsoluteOffsets(offsets) {
+        const offsetsCopy = [];
         for (const offset of offsets) {
             if (typeof offset === 'string') {
-                offsetsCopy.push(BigInteger(offset));
-            } else if (typeof offset === 'number') {
-                offsetsCopy.push(BigInteger(offset));
-            } else {
+                offsetsCopy.push(Types_1.BigInteger(offset));
+            }
+            else if (typeof offset === 'number') {
+                offsetsCopy.push(Types_1.BigInteger(offset));
+            }
+            else {
                 offsetsCopy.push(offset);
             }
         }
-
         if (offsetsCopy.length === 1) {
             return offsetsCopy;
         }
-
         for (let i = 1; i < offsetsCopy.length; i++) {
             offsetsCopy[i] = offsetsCopy[i - 1].add(offsetsCopy[i]);
         }
-
         return offsetsCopy;
     }
-
-    public static bin2hex(bin: Uint8Array): string {
+    static bin2hex(bin) {
         const result = [];
-
         for (const b of bin) {
             result.push(('0' + b.toString(16)).slice(-2));
         }
-
         return result.join('');
     }
-
-    public static isHex(value: string): boolean {
+    static isHex(value) {
         if (value.length % 2 !== 0) {
             return false;
         }
-
         const regex = new RegExp('^[0-9a-fA-F]{' + value.length + '}$');
-
         return regex.test(value);
     }
-
-    public static isHex64(value: string): boolean {
+    static isHex64(value) {
         return (Common.isHex(value) && value.length === 64);
     }
-
-    public static isHex128(value: string): boolean {
+    static isHex128(value) {
         return (Common.isHex(value) && value.length === 128);
     }
-
-    public static str2bin(str: string): Uint8Array {
+    static str2bin(str) {
         const result = new Uint8Array(str.length);
         for (let i = 0; i < str.length; i++) {
             result[i] = str.charCodeAt(i);
         }
-
         return result;
     }
-
-    public static varintLength(value: BigInteger.BigInteger | number): number {
+    static varintLength(value) {
         if (typeof value === 'number') {
-            value = BigInteger(value);
+            value = Types_1.BigInteger(value);
         }
-        const writer = new Writer();
+        const writer = new bytestream_helper_1.Writer();
         writer.varint(value);
         return writer.length;
     }
 }
+exports.Common = Common;

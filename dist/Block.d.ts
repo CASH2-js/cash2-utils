@@ -36,7 +36,7 @@ export declare class Block {
     /**
      * The base transaction branch of the block
      */
-    get baseTransactionBranch(): string;
+    get baseTransactionBranch(): string[];
     /**
      * The transaction tree hash of the block
      */
