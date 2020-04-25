@@ -1,3 +1,16 @@
 # CASH2 Utils
 
-baseTransactionBranch commented out, see ./src/BlockTemplate.ts:280
+## Examples
+
+generate keys from entropy.
+
+```javascript
+const cash2Utils = require('./cash2-utils')
+
+let keys = cash2Utils.Address.fromEntropy('entropy', 'english', 6)
+
+let address = keys.toString()
+
+console.log(keys, address)
+
+```
