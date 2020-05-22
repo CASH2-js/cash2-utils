@@ -3,15 +3,11 @@
   "version": "2.0.0",
   "description": "A Node.js collection of utilities useful for CASH2 developers",
   "main": "src/index.js",
-  "files": [
-    "config.json"
-  ],
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "test-node": "npm run mocha",
-    "test-js": "env FORCE_JS=1 npm run mocha"
+    "test": "echo test"
   },
   "keywords": [
     "Utilities"
